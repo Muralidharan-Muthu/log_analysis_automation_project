@@ -1,0 +1,6 @@
+.venv 
+__pycache__ 
+*.pyc 
+.env
+simple_auth_manager_passwords.json.generated
+
