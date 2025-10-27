@@ -5,7 +5,7 @@
 # Description :
  Designed and implemented a fully automated log monitoring pipeline that scans application log files daily, detects and categorizes error patterns, and stores summarized reports in a PostgreSQL database for analysis.
 
-#The workflow was orchestrated using Apache Airflow, ensuring scheduled and reliable execution, with backup cron jobs on Linux. Integrated a GitHub Actions CI/CD pipeline for automatic testing and deployment to an AWS EC2 environment, enabling seamless updates without manual intervention.
+The workflow was orchestrated using Apache Airflow, ensuring scheduled and reliable execution, with backup cron jobs on Linux. Integrated a GitHub Actions CI/CD pipeline for automatic testing and deployment to an AWS EC2 environment, enabling seamless updates without manual intervention.
 
 # airflow installation commands
 AIRFLOW_VERSION=3.1.0
