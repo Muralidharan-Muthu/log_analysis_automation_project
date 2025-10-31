@@ -7,8 +7,6 @@ from psycopg2.extras import execute_values # helper for efficient bulk inserts i
 from typing import Dict, Tuple # tell readers / IDEs what types functions return
 from dotenv import load_dotenv # used to load the dotenv file
 
-# Configuration Area
-
 # Load environment variables from .env file 
 load_dotenv()
 
