@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd ~/log_analysis_automation
+            cd ~/log-analysis-automation
             git pull origin main
             source .venv/bin/activate
             pip install -r requirements.txt
