@@ -8,7 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -25,17 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v3
-      - name: Copy deploy files to server and restart
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Deploy to Local Machine and restart
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd /home/ubuntu/log_analysis_automation
+            cd ~/log_analysis_automation
             git pull origin main
             source .venv/bin/activate
             pip install -r requirements.txt
             # optionally restart airflow services
-            sudo systemctl restart airflow-standalone
+            sudo systemctl restart airflow standalone
