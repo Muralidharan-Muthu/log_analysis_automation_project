@@ -1,6 +1,5 @@
 [2025-10-14 08:00:01] [INFO] Server started successfully on port 8080
 [2025-10-14 08:00:15] [INFO] Configuration loaded from /etc/app/config.yaml
-[2025-10-14 08:01:05] [INFO] Worker process 15 started
 [2025-10-14 08:02:11] [ERROR] Database connection failed: timeout after 60s
 [2025-10-14 08:02:15] [ERROR] Database connection failed: timeout after 60s
 [2025-10-14 08:03:01] [DEBUG] Cache item 'user_session_123' fetched
