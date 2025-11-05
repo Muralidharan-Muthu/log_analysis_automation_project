@@ -1,47 +1,29 @@
-name: Log-Analysis-Automation (Local Deploy)
+name: Local CI/CD Pipeline
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build_and_test:
-    name: Run Tests
-    runs-on: ubuntu-latest
+  build_and_deploy:
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.12'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Run tests
+        run: pytest -q || echo "No tests found"
+
+      - name: Restart Airflow locally
         run: |
-          pytest -q || echo "No tests found. Skipping."
-
-  deploy:
-    name: Deploy to Local Server
-    needs: build_and_test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy via SSH to Local Machine
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            cd /home/mural/log-analysis-automation
-            echo "Pulling latest code from GitHub..."
-            git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
-            echo "Restarting Airflow..."
-            nohup airflow standalone
-            nohup airflow api-server --port 8080
-            echo "✅ Deployment complete!"
-
+          nohup airflow standalone
+          nohup airflow api-server --port 8080
