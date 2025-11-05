@@ -10,4 +10,4 @@ pytest==8.4.2
 # (Optional) Additional utilities for better logs or scheduling
 python-dotenv==1.1.1
 
-structlog==23.2.0
+structlog==24.1.0
