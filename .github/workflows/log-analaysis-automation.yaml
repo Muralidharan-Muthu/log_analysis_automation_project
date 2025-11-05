@@ -25,5 +25,4 @@ jobs:
 
       - name: Restart Airflow locally
         run: |
-          airflow standalone
           airflow api-server --port 8080
