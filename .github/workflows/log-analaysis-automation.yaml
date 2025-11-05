@@ -25,5 +25,5 @@ jobs:
 
       - name: Restart Airflow locally
         run: |
-          nohup airflow standalone
-          nohup airflow api-server --port 8080
+          airflow standalone
+          airflow api-server --port 8080
